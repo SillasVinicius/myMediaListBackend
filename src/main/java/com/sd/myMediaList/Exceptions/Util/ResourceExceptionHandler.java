@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.sd.myMediaList.Exceptions.MediaNotFoundException;
 import com.sd.myMediaList.Exceptions.StatusNotFoundException;
 import com.sd.myMediaList.Exceptions.TipoNotFoundException;
 import com.sd.myMediaList.Exceptions.UsuarioNotFoundException;
@@ -47,6 +48,19 @@ public class ResourceExceptionHandler {
 		ErrorDetails error = new ErrorDetails();
 		error.setStatus(404l);
 		error.setTitle("Status not found exception.");
+		error.setUrl("http://erros.teste.com/404");
+		error.setTimestamp(System.currentTimeMillis());
+		error.setMessage(e.getMessage());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+
+	}
+	
+	@ExceptionHandler(MediaNotFoundException.class)
+	public ResponseEntity<ErrorDetails> handlerMediaException(MediaNotFoundException e, HttpServletRequest request) {
+		e.printStackTrace();
+		ErrorDetails error = new ErrorDetails();
+		error.setStatus(404l);
+		error.setTitle("Media not found exception.");
 		error.setUrl("http://erros.teste.com/404");
 		error.setTimestamp(System.currentTimeMillis());
 		error.setMessage(e.getMessage());
