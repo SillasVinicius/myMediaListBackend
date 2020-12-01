@@ -27,4 +27,8 @@ public class TipoRepository {
 	public void deleteById(Long id) {
 		repositoryJPA.deleteById(id);
 	}
+
+	public Tipo findByDescricao(String descricao) {
+		return repositoryJPA.findByDescricao(descricao);
+	}
 }

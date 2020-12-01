@@ -19,6 +19,11 @@ public class TipoService {
 	public List<Tipo> findAll() {
 		return repository.findAll();
 	}
+	
+	@Transactional(readOnly = true)
+	public Tipo findByDescricao(String descricao) {
+		return repository.findByDescricao(descricao);
+	}
 
 	@Transactional(readOnly = true)
 	public Tipo get(Long id) {
