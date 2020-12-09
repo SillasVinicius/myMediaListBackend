@@ -16,15 +16,15 @@ public class UsuarioRepository {
 		return repositoryJPA.findAll();
 	}
 
-	public Usuario findById(Long id) {
-		return repositoryJPA.findById(id).get();
+	public Usuario findById(String username) {
+		return repositoryJPA.findById(username).get();
 	}
 
 	public Usuario save(Usuario usuario) {
 		return repositoryJPA.save(usuario);
 	}
 
-	public void deleteById(Long id) {
-		repositoryJPA.deleteById(id);
+	public void deleteById(String username) {
+		repositoryJPA.deleteById(username);
 	}
 }

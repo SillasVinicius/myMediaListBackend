@@ -2,6 +2,8 @@ package com.sd.myMediaList.Services;
 
 import java.util.List;
 
+import com.sd.myMediaList.Models.Usuario;
+import com.sd.myMediaList.Repositiories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +16,11 @@ import com.sd.myMediaList.Repositiories.BibliotecaRepository;
 public class BibliotecaService {
 	@Autowired
 	private BibliotecaRepository repository;
-	
+
+	@Autowired
+	private UsuarioRepository userRpository;
+
+
 	@Transactional(readOnly = true)
 	public List<Biblioteca> findAll() {
 		return repository.findAll();
@@ -32,6 +38,9 @@ public class BibliotecaService {
 
 	@Transactional
 	public Biblioteca save(Biblioteca biblioteca) {
+		Usuario usuario = biblioteca.getUsuario();
+		biblioteca.setUsuario(usuario);
+
 		return repository.save(biblioteca);
 	}
 

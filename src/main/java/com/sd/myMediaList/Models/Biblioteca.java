@@ -25,7 +25,6 @@ public class Biblioteca extends RepresentationModel<Biblioteca> implements Seria
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@OneToOne
 	private Usuario usuario;
 
 	@ManyToOne
